@@ -1,0 +1,1996 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Online_Shopping_System.Data.SqlClient</name>
+    </assembly>
+    <members>
+        <member name="T:Online_Shopping_System.Data.SqlClient.SqlCartProvider">
+            <summary>
+             This class is the SqlClient Data Access Logic Component implementation for the <see cref="T:Online_Shopping_System.Entities.Cart"/> entity.
+            </summary>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCartProvider.#ctor(System.String,System.Boolean,System.String)">
+            <summary>
+            Creates a new <see cref="T:Online_Shopping_System.Data.SqlClient.SqlCartProvider"/> instance.
+            Uses connection string to connect to datasource.
+            </summary>
+            <param name="connectionString">The connection string to the database.</param>
+            <param name="useStoredProcedure">A boolean value that indicates if we use the stored procedures or embedded queries.</param>
+            <param name="providerInvariantName">Name of the invariant provider use by the DbProviderFactory.</param>
+        </member>
+        <member name="T:Online_Shopping_System.Data.SqlClient.SqlCartProviderBase">
+            <summary>
+             This class is the SqlClient Data Access Logic Component implementation for the <see cref="T:Online_Shopping_System.Entities.Cart"/> entity.
+            </summary>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCartProviderBase.#ctor">
+            <summary>
+            Creates a new <see cref="T:Online_Shopping_System.Data.SqlClient.SqlCartProviderBase"/> instance.
+            </summary>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCartProviderBase.#ctor(System.String,System.Boolean,System.String)">
+            <summary>
+            Creates a new <see cref="T:Online_Shopping_System.Data.SqlClient.SqlCartProviderBase"/> instance.
+            Uses connection string to connect to datasource.
+            </summary>
+            <param name="connectionString">The connection string to the database.</param>
+            <param name="useStoredProcedure">A boolean value that indicates if we should use stored procedures or embedded queries.</param>
+            <param name="providerInvariantName">Name of the invariant provider use by the DbProviderFactory.</param>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.SqlCartProviderBase.ConnectionString">
+            <summary>
+            Gets or sets the connection string.
+            </summary>
+            <value>The connection string.</value>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.SqlCartProviderBase.UseStoredProcedure">
+            <summary>
+            Gets or sets a value indicating whether to use stored procedures.
+            </summary>
+            <value><c>true</c> if we choose to use use stored procedures; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.SqlCartProviderBase.ProviderInvariantName">
+            <summary>
+            Gets or sets the invariant provider name listed in the DbProviderFactories machine.config section.
+            </summary>
+            <value>The name of the provider invariant.</value>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCartProviderBase.Delete(Online_Shopping_System.Data.TransactionManager,System.Int32)">
+            <summary>
+            	Deletes a row from the DataSource.
+            </summary>
+            <param name="_cartId">. Primary Key.</param>	
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <remarks>Deletes based on primary key(s).</remarks>
+            <returns>Returns true if operation suceeded.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCartProviderBase.Find(Online_Shopping_System.Data.TransactionManager,System.String,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Returns rows meeting the whereClause condition from the DataSource.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="whereClause">Specifies the condition for the rows returned by a query (Name='John Doe', Name='John Doe' AND Id='1', Name='John Doe' OR Id='1').</param>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">out. The number of rows that match this query.</param>
+            <remarks>Operators must be capitalized (OR, AND).</remarks>
+            <returns>Returns a typed collection of Online_Shopping_System.Entities.Cart objects.</returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCartProviderBase.Find(Online_Shopping_System.Data.TransactionManager,Online_Shopping_System.Data.IFilterParameterCollection,System.String,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Returns rows from the DataSource that meet the parameter conditions.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="parameters">A collection of <see cref="T:Online_Shopping_System.Data.SqlFilterParameter"/> objects.</param>
+            <param name="orderBy">Specifies the sort criteria for the rows in the DataSource (Name ASC; BirthDay DESC, Name ASC);</param>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">out. The number of rows that match this query.</param>
+            <returns>Returns a typed collection of Online_Shopping_System.Entities.Cart objects.</returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCartProviderBase.GetAll(Online_Shopping_System.Data.TransactionManager,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Gets All rows from the DataSource.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">out. The number of rows that match this query.</param>
+            <remarks></remarks>
+            <returns>Returns a typed collection of Online_Shopping_System.Entities.Cart objects.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCartProviderBase.GetPaged(Online_Shopping_System.Data.TransactionManager,System.String,System.String,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            Gets a page of rows from the DataSource.
+            </summary>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">Number of rows in the DataSource.</param>
+            <param name="whereClause">Specifies the condition for the rows returned by a query (Name='John Doe', Name='John Doe' AND Id='1', Name='John Doe' OR Id='1').</param>
+            <param name="orderBy">Specifies the sort criteria for the rows in the DataSource (Name ASC; BirthDay DESC, Name ASC);</param>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <remarks></remarks>
+            <returns>Returns a typed collection of Online_Shopping_System.Entities.Cart objects.</returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCartProviderBase.GetByCartDetailId(Online_Shopping_System.Data.TransactionManager,System.Int32,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Gets rows from the datasource based on the FK_Cart_Cart_Detail key.
+            	FK_Cart_Cart_Detail Description: 
+            </summary>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="_cartDetailId"></param>
+            <param name="count">out parameter to get total records for query</param>
+            <remarks></remarks>
+            <returns>Returns a typed collection of Online_Shopping_System.Entities.Cart objects.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCartProviderBase.GetByCustomerId(Online_Shopping_System.Data.TransactionManager,System.Int32,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Gets rows from the datasource based on the FK_Cart_customer1 key.
+            	FK_Cart_customer1 Description: 
+            </summary>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="_customerId"></param>
+            <param name="count">out parameter to get total records for query</param>
+            <remarks></remarks>
+            <returns>Returns a typed collection of Online_Shopping_System.Entities.Cart objects.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCartProviderBase.GetByCartId(Online_Shopping_System.Data.TransactionManager,System.Int32,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Gets rows from the datasource based on the PK_Cart index.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="_cartId"></param>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">out parameter to get total records for query.</param>
+            <returns>Returns an instance of the <see cref="T:Online_Shopping_System.Entities.Cart"/> class.</returns>
+            <remarks></remarks>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCartProviderBase.BulkInsert(Online_Shopping_System.Data.TransactionManager,Online_Shopping_System.Entities.TList{Online_Shopping_System.Entities.Cart})">
+            <summary>
+            Lets you efficiently bulk insert many entities to the database.
+            </summary>
+            <param name="transactionManager">The transaction manager.</param>
+            <param name="entities">The entities.</param>
+            <remarks>
+            	After inserting into the datasource, the Online_Shopping_System.Entities.Cart object will be updated
+            	to refelect any changes made by the datasource. (ie: identity or computed columns)
+            </remarks>	
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCartProviderBase.Insert(Online_Shopping_System.Data.TransactionManager,Online_Shopping_System.Entities.Cart)">
+            <summary>
+            	Inserts a Online_Shopping_System.Entities.Cart object into the datasource using a transaction.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="entity">Online_Shopping_System.Entities.Cart object to insert.</param>
+            <remarks>
+            	After inserting into the datasource, the Online_Shopping_System.Entities.Cart object will be updated
+            	to refelect any changes made by the datasource. (ie: identity or computed columns)
+            </remarks>	
+            <returns>Returns true if operation is successful.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCartProviderBase.Update(Online_Shopping_System.Data.TransactionManager,Online_Shopping_System.Entities.Cart)">
+            <summary>
+            	Update an existing row in the datasource.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="entity">Online_Shopping_System.Entities.Cart object to update.</param>
+            <remarks>
+            	After updating the datasource, the Online_Shopping_System.Entities.Cart object will be updated
+            	to refelect any changes made by the datasource. (ie: identity or computed columns)
+            </remarks>
+            <returns>Returns true if operation is successful.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="T:Online_Shopping_System.Data.SqlClient.SqlCartDetailProvider">
+            <summary>
+             This class is the SqlClient Data Access Logic Component implementation for the <see cref="T:Online_Shopping_System.Entities.CartDetail"/> entity.
+            </summary>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCartDetailProvider.#ctor(System.String,System.Boolean,System.String)">
+            <summary>
+            Creates a new <see cref="T:Online_Shopping_System.Data.SqlClient.SqlCartDetailProvider"/> instance.
+            Uses connection string to connect to datasource.
+            </summary>
+            <param name="connectionString">The connection string to the database.</param>
+            <param name="useStoredProcedure">A boolean value that indicates if we use the stored procedures or embedded queries.</param>
+            <param name="providerInvariantName">Name of the invariant provider use by the DbProviderFactory.</param>
+        </member>
+        <member name="T:Online_Shopping_System.Data.SqlClient.SqlCartDetailProviderBase">
+            <summary>
+             This class is the SqlClient Data Access Logic Component implementation for the <see cref="T:Online_Shopping_System.Entities.CartDetail"/> entity.
+            </summary>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCartDetailProviderBase.#ctor">
+            <summary>
+            Creates a new <see cref="T:Online_Shopping_System.Data.SqlClient.SqlCartDetailProviderBase"/> instance.
+            </summary>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCartDetailProviderBase.#ctor(System.String,System.Boolean,System.String)">
+            <summary>
+            Creates a new <see cref="T:Online_Shopping_System.Data.SqlClient.SqlCartDetailProviderBase"/> instance.
+            Uses connection string to connect to datasource.
+            </summary>
+            <param name="connectionString">The connection string to the database.</param>
+            <param name="useStoredProcedure">A boolean value that indicates if we should use stored procedures or embedded queries.</param>
+            <param name="providerInvariantName">Name of the invariant provider use by the DbProviderFactory.</param>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.SqlCartDetailProviderBase.ConnectionString">
+            <summary>
+            Gets or sets the connection string.
+            </summary>
+            <value>The connection string.</value>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.SqlCartDetailProviderBase.UseStoredProcedure">
+            <summary>
+            Gets or sets a value indicating whether to use stored procedures.
+            </summary>
+            <value><c>true</c> if we choose to use use stored procedures; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.SqlCartDetailProviderBase.ProviderInvariantName">
+            <summary>
+            Gets or sets the invariant provider name listed in the DbProviderFactories machine.config section.
+            </summary>
+            <value>The name of the provider invariant.</value>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCartDetailProviderBase.Delete(Online_Shopping_System.Data.TransactionManager,System.Int32)">
+            <summary>
+            	Deletes a row from the DataSource.
+            </summary>
+            <param name="_cartDetailId">. Primary Key.</param>	
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <remarks>Deletes based on primary key(s).</remarks>
+            <returns>Returns true if operation suceeded.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCartDetailProviderBase.Find(Online_Shopping_System.Data.TransactionManager,System.String,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Returns rows meeting the whereClause condition from the DataSource.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="whereClause">Specifies the condition for the rows returned by a query (Name='John Doe', Name='John Doe' AND Id='1', Name='John Doe' OR Id='1').</param>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">out. The number of rows that match this query.</param>
+            <remarks>Operators must be capitalized (OR, AND).</remarks>
+            <returns>Returns a typed collection of Online_Shopping_System.Entities.CartDetail objects.</returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCartDetailProviderBase.Find(Online_Shopping_System.Data.TransactionManager,Online_Shopping_System.Data.IFilterParameterCollection,System.String,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Returns rows from the DataSource that meet the parameter conditions.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="parameters">A collection of <see cref="T:Online_Shopping_System.Data.SqlFilterParameter"/> objects.</param>
+            <param name="orderBy">Specifies the sort criteria for the rows in the DataSource (Name ASC; BirthDay DESC, Name ASC);</param>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">out. The number of rows that match this query.</param>
+            <returns>Returns a typed collection of Online_Shopping_System.Entities.CartDetail objects.</returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCartDetailProviderBase.GetAll(Online_Shopping_System.Data.TransactionManager,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Gets All rows from the DataSource.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">out. The number of rows that match this query.</param>
+            <remarks></remarks>
+            <returns>Returns a typed collection of Online_Shopping_System.Entities.CartDetail objects.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCartDetailProviderBase.GetPaged(Online_Shopping_System.Data.TransactionManager,System.String,System.String,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            Gets a page of rows from the DataSource.
+            </summary>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">Number of rows in the DataSource.</param>
+            <param name="whereClause">Specifies the condition for the rows returned by a query (Name='John Doe', Name='John Doe' AND Id='1', Name='John Doe' OR Id='1').</param>
+            <param name="orderBy">Specifies the sort criteria for the rows in the DataSource (Name ASC; BirthDay DESC, Name ASC);</param>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <remarks></remarks>
+            <returns>Returns a typed collection of Online_Shopping_System.Entities.CartDetail objects.</returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCartDetailProviderBase.GetByItemId(Online_Shopping_System.Data.TransactionManager,System.Int32,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Gets rows from the datasource based on the FK_Cart_Detail_Item key.
+            	FK_Cart_Detail_Item Description: 
+            </summary>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="_itemId"></param>
+            <param name="count">out parameter to get total records for query</param>
+            <remarks></remarks>
+            <returns>Returns a typed collection of Online_Shopping_System.Entities.CartDetail objects.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCartDetailProviderBase.GetByCartDetailId(Online_Shopping_System.Data.TransactionManager,System.Int32,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Gets rows from the datasource based on the PK_Cart_Detail index.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="_cartDetailId"></param>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">out parameter to get total records for query.</param>
+            <returns>Returns an instance of the <see cref="T:Online_Shopping_System.Entities.CartDetail"/> class.</returns>
+            <remarks></remarks>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCartDetailProviderBase.BulkInsert(Online_Shopping_System.Data.TransactionManager,Online_Shopping_System.Entities.TList{Online_Shopping_System.Entities.CartDetail})">
+            <summary>
+            Lets you efficiently bulk insert many entities to the database.
+            </summary>
+            <param name="transactionManager">The transaction manager.</param>
+            <param name="entities">The entities.</param>
+            <remarks>
+            	After inserting into the datasource, the Online_Shopping_System.Entities.CartDetail object will be updated
+            	to refelect any changes made by the datasource. (ie: identity or computed columns)
+            </remarks>	
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCartDetailProviderBase.Insert(Online_Shopping_System.Data.TransactionManager,Online_Shopping_System.Entities.CartDetail)">
+            <summary>
+            	Inserts a Online_Shopping_System.Entities.CartDetail object into the datasource using a transaction.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="entity">Online_Shopping_System.Entities.CartDetail object to insert.</param>
+            <remarks>
+            	After inserting into the datasource, the Online_Shopping_System.Entities.CartDetail object will be updated
+            	to refelect any changes made by the datasource. (ie: identity or computed columns)
+            </remarks>	
+            <returns>Returns true if operation is successful.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCartDetailProviderBase.Update(Online_Shopping_System.Data.TransactionManager,Online_Shopping_System.Entities.CartDetail)">
+            <summary>
+            	Update an existing row in the datasource.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="entity">Online_Shopping_System.Entities.CartDetail object to update.</param>
+            <remarks>
+            	After updating the datasource, the Online_Shopping_System.Entities.CartDetail object will be updated
+            	to refelect any changes made by the datasource. (ie: identity or computed columns)
+            </remarks>
+            <returns>Returns true if operation is successful.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="T:Online_Shopping_System.Data.SqlClient.SqlCategoryProvider">
+            <summary>
+             This class is the SqlClient Data Access Logic Component implementation for the <see cref="T:Online_Shopping_System.Entities.Category"/> entity.
+            </summary>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCategoryProvider.#ctor(System.String,System.Boolean,System.String)">
+            <summary>
+            Creates a new <see cref="T:Online_Shopping_System.Data.SqlClient.SqlCategoryProvider"/> instance.
+            Uses connection string to connect to datasource.
+            </summary>
+            <param name="connectionString">The connection string to the database.</param>
+            <param name="useStoredProcedure">A boolean value that indicates if we use the stored procedures or embedded queries.</param>
+            <param name="providerInvariantName">Name of the invariant provider use by the DbProviderFactory.</param>
+        </member>
+        <member name="T:Online_Shopping_System.Data.SqlClient.SqlCategoryProviderBase">
+            <summary>
+             This class is the SqlClient Data Access Logic Component implementation for the <see cref="T:Online_Shopping_System.Entities.Category"/> entity.
+            </summary>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCategoryProviderBase.#ctor">
+            <summary>
+            Creates a new <see cref="T:Online_Shopping_System.Data.SqlClient.SqlCategoryProviderBase"/> instance.
+            </summary>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCategoryProviderBase.#ctor(System.String,System.Boolean,System.String)">
+            <summary>
+            Creates a new <see cref="T:Online_Shopping_System.Data.SqlClient.SqlCategoryProviderBase"/> instance.
+            Uses connection string to connect to datasource.
+            </summary>
+            <param name="connectionString">The connection string to the database.</param>
+            <param name="useStoredProcedure">A boolean value that indicates if we should use stored procedures or embedded queries.</param>
+            <param name="providerInvariantName">Name of the invariant provider use by the DbProviderFactory.</param>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.SqlCategoryProviderBase.ConnectionString">
+            <summary>
+            Gets or sets the connection string.
+            </summary>
+            <value>The connection string.</value>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.SqlCategoryProviderBase.UseStoredProcedure">
+            <summary>
+            Gets or sets a value indicating whether to use stored procedures.
+            </summary>
+            <value><c>true</c> if we choose to use use stored procedures; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.SqlCategoryProviderBase.ProviderInvariantName">
+            <summary>
+            Gets or sets the invariant provider name listed in the DbProviderFactories machine.config section.
+            </summary>
+            <value>The name of the provider invariant.</value>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCategoryProviderBase.Delete(Online_Shopping_System.Data.TransactionManager,System.Int32)">
+            <summary>
+            	Deletes a row from the DataSource.
+            </summary>
+            <param name="_categoryId">. Primary Key.</param>	
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <remarks>Deletes based on primary key(s).</remarks>
+            <returns>Returns true if operation suceeded.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCategoryProviderBase.Find(Online_Shopping_System.Data.TransactionManager,System.String,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Returns rows meeting the whereClause condition from the DataSource.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="whereClause">Specifies the condition for the rows returned by a query (Name='John Doe', Name='John Doe' AND Id='1', Name='John Doe' OR Id='1').</param>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">out. The number of rows that match this query.</param>
+            <remarks>Operators must be capitalized (OR, AND).</remarks>
+            <returns>Returns a typed collection of Online_Shopping_System.Entities.Category objects.</returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCategoryProviderBase.Find(Online_Shopping_System.Data.TransactionManager,Online_Shopping_System.Data.IFilterParameterCollection,System.String,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Returns rows from the DataSource that meet the parameter conditions.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="parameters">A collection of <see cref="T:Online_Shopping_System.Data.SqlFilterParameter"/> objects.</param>
+            <param name="orderBy">Specifies the sort criteria for the rows in the DataSource (Name ASC; BirthDay DESC, Name ASC);</param>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">out. The number of rows that match this query.</param>
+            <returns>Returns a typed collection of Online_Shopping_System.Entities.Category objects.</returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCategoryProviderBase.GetAll(Online_Shopping_System.Data.TransactionManager,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Gets All rows from the DataSource.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">out. The number of rows that match this query.</param>
+            <remarks></remarks>
+            <returns>Returns a typed collection of Online_Shopping_System.Entities.Category objects.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCategoryProviderBase.GetPaged(Online_Shopping_System.Data.TransactionManager,System.String,System.String,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            Gets a page of rows from the DataSource.
+            </summary>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">Number of rows in the DataSource.</param>
+            <param name="whereClause">Specifies the condition for the rows returned by a query (Name='John Doe', Name='John Doe' AND Id='1', Name='John Doe' OR Id='1').</param>
+            <param name="orderBy">Specifies the sort criteria for the rows in the DataSource (Name ASC; BirthDay DESC, Name ASC);</param>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <remarks></remarks>
+            <returns>Returns a typed collection of Online_Shopping_System.Entities.Category objects.</returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCategoryProviderBase.GetByItemId(Online_Shopping_System.Data.TransactionManager,System.Int32,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Gets rows from the datasource based on the FK_Category_Item key.
+            	FK_Category_Item Description: 
+            </summary>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="_itemId"></param>
+            <param name="count">out parameter to get total records for query</param>
+            <remarks></remarks>
+            <returns>Returns a typed collection of Online_Shopping_System.Entities.Category objects.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCategoryProviderBase.GetByCategoryId(Online_Shopping_System.Data.TransactionManager,System.Int32,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Gets rows from the datasource based on the PK_Category index.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="_categoryId"></param>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">out parameter to get total records for query.</param>
+            <returns>Returns an instance of the <see cref="T:Online_Shopping_System.Entities.Category"/> class.</returns>
+            <remarks></remarks>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCategoryProviderBase.BulkInsert(Online_Shopping_System.Data.TransactionManager,Online_Shopping_System.Entities.TList{Online_Shopping_System.Entities.Category})">
+            <summary>
+            Lets you efficiently bulk insert many entities to the database.
+            </summary>
+            <param name="transactionManager">The transaction manager.</param>
+            <param name="entities">The entities.</param>
+            <remarks>
+            	After inserting into the datasource, the Online_Shopping_System.Entities.Category object will be updated
+            	to refelect any changes made by the datasource. (ie: identity or computed columns)
+            </remarks>	
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCategoryProviderBase.Insert(Online_Shopping_System.Data.TransactionManager,Online_Shopping_System.Entities.Category)">
+            <summary>
+            	Inserts a Online_Shopping_System.Entities.Category object into the datasource using a transaction.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="entity">Online_Shopping_System.Entities.Category object to insert.</param>
+            <remarks>
+            	After inserting into the datasource, the Online_Shopping_System.Entities.Category object will be updated
+            	to refelect any changes made by the datasource. (ie: identity or computed columns)
+            </remarks>	
+            <returns>Returns true if operation is successful.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCategoryProviderBase.Update(Online_Shopping_System.Data.TransactionManager,Online_Shopping_System.Entities.Category)">
+            <summary>
+            	Update an existing row in the datasource.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="entity">Online_Shopping_System.Entities.Category object to update.</param>
+            <remarks>
+            	After updating the datasource, the Online_Shopping_System.Entities.Category object will be updated
+            	to refelect any changes made by the datasource. (ie: identity or computed columns)
+            </remarks>
+            <returns>Returns true if operation is successful.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="T:Online_Shopping_System.Data.SqlClient.SqlCustomerProvider">
+            <summary>
+             This class is the SqlClient Data Access Logic Component implementation for the <see cref="T:Online_Shopping_System.Entities.Customer"/> entity.
+            </summary>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCustomerProvider.#ctor(System.String,System.Boolean,System.String)">
+            <summary>
+            Creates a new <see cref="T:Online_Shopping_System.Data.SqlClient.SqlCustomerProvider"/> instance.
+            Uses connection string to connect to datasource.
+            </summary>
+            <param name="connectionString">The connection string to the database.</param>
+            <param name="useStoredProcedure">A boolean value that indicates if we use the stored procedures or embedded queries.</param>
+            <param name="providerInvariantName">Name of the invariant provider use by the DbProviderFactory.</param>
+        </member>
+        <member name="T:Online_Shopping_System.Data.SqlClient.SqlCustomerProviderBase">
+            <summary>
+             This class is the SqlClient Data Access Logic Component implementation for the <see cref="T:Online_Shopping_System.Entities.Customer"/> entity.
+            </summary>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCustomerProviderBase.#ctor">
+            <summary>
+            Creates a new <see cref="T:Online_Shopping_System.Data.SqlClient.SqlCustomerProviderBase"/> instance.
+            </summary>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCustomerProviderBase.#ctor(System.String,System.Boolean,System.String)">
+            <summary>
+            Creates a new <see cref="T:Online_Shopping_System.Data.SqlClient.SqlCustomerProviderBase"/> instance.
+            Uses connection string to connect to datasource.
+            </summary>
+            <param name="connectionString">The connection string to the database.</param>
+            <param name="useStoredProcedure">A boolean value that indicates if we should use stored procedures or embedded queries.</param>
+            <param name="providerInvariantName">Name of the invariant provider use by the DbProviderFactory.</param>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.SqlCustomerProviderBase.ConnectionString">
+            <summary>
+            Gets or sets the connection string.
+            </summary>
+            <value>The connection string.</value>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.SqlCustomerProviderBase.UseStoredProcedure">
+            <summary>
+            Gets or sets a value indicating whether to use stored procedures.
+            </summary>
+            <value><c>true</c> if we choose to use use stored procedures; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.SqlCustomerProviderBase.ProviderInvariantName">
+            <summary>
+            Gets or sets the invariant provider name listed in the DbProviderFactories machine.config section.
+            </summary>
+            <value>The name of the provider invariant.</value>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCustomerProviderBase.Delete(Online_Shopping_System.Data.TransactionManager,System.Int32)">
+            <summary>
+            	Deletes a row from the DataSource.
+            </summary>
+            <param name="_customerId">. Primary Key.</param>	
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <remarks>Deletes based on primary key(s).</remarks>
+            <returns>Returns true if operation suceeded.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCustomerProviderBase.Find(Online_Shopping_System.Data.TransactionManager,System.String,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Returns rows meeting the whereClause condition from the DataSource.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="whereClause">Specifies the condition for the rows returned by a query (Name='John Doe', Name='John Doe' AND Id='1', Name='John Doe' OR Id='1').</param>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">out. The number of rows that match this query.</param>
+            <remarks>Operators must be capitalized (OR, AND).</remarks>
+            <returns>Returns a typed collection of Online_Shopping_System.Entities.Customer objects.</returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCustomerProviderBase.Find(Online_Shopping_System.Data.TransactionManager,Online_Shopping_System.Data.IFilterParameterCollection,System.String,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Returns rows from the DataSource that meet the parameter conditions.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="parameters">A collection of <see cref="T:Online_Shopping_System.Data.SqlFilterParameter"/> objects.</param>
+            <param name="orderBy">Specifies the sort criteria for the rows in the DataSource (Name ASC; BirthDay DESC, Name ASC);</param>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">out. The number of rows that match this query.</param>
+            <returns>Returns a typed collection of Online_Shopping_System.Entities.Customer objects.</returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCustomerProviderBase.GetAll(Online_Shopping_System.Data.TransactionManager,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Gets All rows from the DataSource.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">out. The number of rows that match this query.</param>
+            <remarks></remarks>
+            <returns>Returns a typed collection of Online_Shopping_System.Entities.Customer objects.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCustomerProviderBase.GetPaged(Online_Shopping_System.Data.TransactionManager,System.String,System.String,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            Gets a page of rows from the DataSource.
+            </summary>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">Number of rows in the DataSource.</param>
+            <param name="whereClause">Specifies the condition for the rows returned by a query (Name='John Doe', Name='John Doe' AND Id='1', Name='John Doe' OR Id='1').</param>
+            <param name="orderBy">Specifies the sort criteria for the rows in the DataSource (Name ASC; BirthDay DESC, Name ASC);</param>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <remarks></remarks>
+            <returns>Returns a typed collection of Online_Shopping_System.Entities.Customer objects.</returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCustomerProviderBase.GetByCustomerId(Online_Shopping_System.Data.TransactionManager,System.Int32,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Gets rows from the datasource based on the PK_customer index.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="_customerId"></param>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">out parameter to get total records for query.</param>
+            <returns>Returns an instance of the <see cref="T:Online_Shopping_System.Entities.Customer"/> class.</returns>
+            <remarks></remarks>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCustomerProviderBase.BulkInsert(Online_Shopping_System.Data.TransactionManager,Online_Shopping_System.Entities.TList{Online_Shopping_System.Entities.Customer})">
+            <summary>
+            Lets you efficiently bulk insert many entities to the database.
+            </summary>
+            <param name="transactionManager">The transaction manager.</param>
+            <param name="entities">The entities.</param>
+            <remarks>
+            	After inserting into the datasource, the Online_Shopping_System.Entities.Customer object will be updated
+            	to refelect any changes made by the datasource. (ie: identity or computed columns)
+            </remarks>	
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCustomerProviderBase.Insert(Online_Shopping_System.Data.TransactionManager,Online_Shopping_System.Entities.Customer)">
+            <summary>
+            	Inserts a Online_Shopping_System.Entities.Customer object into the datasource using a transaction.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="entity">Online_Shopping_System.Entities.Customer object to insert.</param>
+            <remarks>
+            	After inserting into the datasource, the Online_Shopping_System.Entities.Customer object will be updated
+            	to refelect any changes made by the datasource. (ie: identity or computed columns)
+            </remarks>	
+            <returns>Returns true if operation is successful.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlCustomerProviderBase.Update(Online_Shopping_System.Data.TransactionManager,Online_Shopping_System.Entities.Customer)">
+            <summary>
+            	Update an existing row in the datasource.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="entity">Online_Shopping_System.Entities.Customer object to update.</param>
+            <remarks>
+            	After updating the datasource, the Online_Shopping_System.Entities.Customer object will be updated
+            	to refelect any changes made by the datasource. (ie: identity or computed columns)
+            </remarks>
+            <returns>Returns true if operation is successful.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="T:Online_Shopping_System.Data.SqlClient.SqlInvoiceProvider">
+            <summary>
+             This class is the SqlClient Data Access Logic Component implementation for the <see cref="T:Online_Shopping_System.Entities.Invoice"/> entity.
+            </summary>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlInvoiceProvider.#ctor(System.String,System.Boolean,System.String)">
+            <summary>
+            Creates a new <see cref="T:Online_Shopping_System.Data.SqlClient.SqlInvoiceProvider"/> instance.
+            Uses connection string to connect to datasource.
+            </summary>
+            <param name="connectionString">The connection string to the database.</param>
+            <param name="useStoredProcedure">A boolean value that indicates if we use the stored procedures or embedded queries.</param>
+            <param name="providerInvariantName">Name of the invariant provider use by the DbProviderFactory.</param>
+        </member>
+        <member name="T:Online_Shopping_System.Data.SqlClient.SqlInvoiceProviderBase">
+            <summary>
+             This class is the SqlClient Data Access Logic Component implementation for the <see cref="T:Online_Shopping_System.Entities.Invoice"/> entity.
+            </summary>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlInvoiceProviderBase.#ctor">
+            <summary>
+            Creates a new <see cref="T:Online_Shopping_System.Data.SqlClient.SqlInvoiceProviderBase"/> instance.
+            </summary>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlInvoiceProviderBase.#ctor(System.String,System.Boolean,System.String)">
+            <summary>
+            Creates a new <see cref="T:Online_Shopping_System.Data.SqlClient.SqlInvoiceProviderBase"/> instance.
+            Uses connection string to connect to datasource.
+            </summary>
+            <param name="connectionString">The connection string to the database.</param>
+            <param name="useStoredProcedure">A boolean value that indicates if we should use stored procedures or embedded queries.</param>
+            <param name="providerInvariantName">Name of the invariant provider use by the DbProviderFactory.</param>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.SqlInvoiceProviderBase.ConnectionString">
+            <summary>
+            Gets or sets the connection string.
+            </summary>
+            <value>The connection string.</value>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.SqlInvoiceProviderBase.UseStoredProcedure">
+            <summary>
+            Gets or sets a value indicating whether to use stored procedures.
+            </summary>
+            <value><c>true</c> if we choose to use use stored procedures; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.SqlInvoiceProviderBase.ProviderInvariantName">
+            <summary>
+            Gets or sets the invariant provider name listed in the DbProviderFactories machine.config section.
+            </summary>
+            <value>The name of the provider invariant.</value>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlInvoiceProviderBase.Delete(Online_Shopping_System.Data.TransactionManager,System.Int32)">
+            <summary>
+            	Deletes a row from the DataSource.
+            </summary>
+            <param name="_invoiceId">. Primary Key.</param>	
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <remarks>Deletes based on primary key(s).</remarks>
+            <returns>Returns true if operation suceeded.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlInvoiceProviderBase.Find(Online_Shopping_System.Data.TransactionManager,System.String,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Returns rows meeting the whereClause condition from the DataSource.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="whereClause">Specifies the condition for the rows returned by a query (Name='John Doe', Name='John Doe' AND Id='1', Name='John Doe' OR Id='1').</param>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">out. The number of rows that match this query.</param>
+            <remarks>Operators must be capitalized (OR, AND).</remarks>
+            <returns>Returns a typed collection of Online_Shopping_System.Entities.Invoice objects.</returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlInvoiceProviderBase.Find(Online_Shopping_System.Data.TransactionManager,Online_Shopping_System.Data.IFilterParameterCollection,System.String,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Returns rows from the DataSource that meet the parameter conditions.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="parameters">A collection of <see cref="T:Online_Shopping_System.Data.SqlFilterParameter"/> objects.</param>
+            <param name="orderBy">Specifies the sort criteria for the rows in the DataSource (Name ASC; BirthDay DESC, Name ASC);</param>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">out. The number of rows that match this query.</param>
+            <returns>Returns a typed collection of Online_Shopping_System.Entities.Invoice objects.</returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlInvoiceProviderBase.GetAll(Online_Shopping_System.Data.TransactionManager,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Gets All rows from the DataSource.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">out. The number of rows that match this query.</param>
+            <remarks></remarks>
+            <returns>Returns a typed collection of Online_Shopping_System.Entities.Invoice objects.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlInvoiceProviderBase.GetPaged(Online_Shopping_System.Data.TransactionManager,System.String,System.String,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            Gets a page of rows from the DataSource.
+            </summary>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">Number of rows in the DataSource.</param>
+            <param name="whereClause">Specifies the condition for the rows returned by a query (Name='John Doe', Name='John Doe' AND Id='1', Name='John Doe' OR Id='1').</param>
+            <param name="orderBy">Specifies the sort criteria for the rows in the DataSource (Name ASC; BirthDay DESC, Name ASC);</param>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <remarks></remarks>
+            <returns>Returns a typed collection of Online_Shopping_System.Entities.Invoice objects.</returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlInvoiceProviderBase.GetByPaymentId(Online_Shopping_System.Data.TransactionManager,System.Int32,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Gets rows from the datasource based on the FK_Invoice_Payment key.
+            	FK_Invoice_Payment Description: 
+            </summary>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="_paymentId"></param>
+            <param name="count">out parameter to get total records for query</param>
+            <remarks></remarks>
+            <returns>Returns a typed collection of Online_Shopping_System.Entities.Invoice objects.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlInvoiceProviderBase.GetByInvoiceId(Online_Shopping_System.Data.TransactionManager,System.Int32,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Gets rows from the datasource based on the PK_Invoice index.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="_invoiceId"></param>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">out parameter to get total records for query.</param>
+            <returns>Returns an instance of the <see cref="T:Online_Shopping_System.Entities.Invoice"/> class.</returns>
+            <remarks></remarks>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlInvoiceProviderBase.BulkInsert(Online_Shopping_System.Data.TransactionManager,Online_Shopping_System.Entities.TList{Online_Shopping_System.Entities.Invoice})">
+            <summary>
+            Lets you efficiently bulk insert many entities to the database.
+            </summary>
+            <param name="transactionManager">The transaction manager.</param>
+            <param name="entities">The entities.</param>
+            <remarks>
+            	After inserting into the datasource, the Online_Shopping_System.Entities.Invoice object will be updated
+            	to refelect any changes made by the datasource. (ie: identity or computed columns)
+            </remarks>	
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlInvoiceProviderBase.Insert(Online_Shopping_System.Data.TransactionManager,Online_Shopping_System.Entities.Invoice)">
+            <summary>
+            	Inserts a Online_Shopping_System.Entities.Invoice object into the datasource using a transaction.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="entity">Online_Shopping_System.Entities.Invoice object to insert.</param>
+            <remarks>
+            	After inserting into the datasource, the Online_Shopping_System.Entities.Invoice object will be updated
+            	to refelect any changes made by the datasource. (ie: identity or computed columns)
+            </remarks>	
+            <returns>Returns true if operation is successful.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlInvoiceProviderBase.Update(Online_Shopping_System.Data.TransactionManager,Online_Shopping_System.Entities.Invoice)">
+            <summary>
+            	Update an existing row in the datasource.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="entity">Online_Shopping_System.Entities.Invoice object to update.</param>
+            <remarks>
+            	After updating the datasource, the Online_Shopping_System.Entities.Invoice object will be updated
+            	to refelect any changes made by the datasource. (ie: identity or computed columns)
+            </remarks>
+            <returns>Returns true if operation is successful.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="T:Online_Shopping_System.Data.SqlClient.SqlItemProvider">
+            <summary>
+             This class is the SqlClient Data Access Logic Component implementation for the <see cref="T:Online_Shopping_System.Entities.Item"/> entity.
+            </summary>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlItemProvider.#ctor(System.String,System.Boolean,System.String)">
+            <summary>
+            Creates a new <see cref="T:Online_Shopping_System.Data.SqlClient.SqlItemProvider"/> instance.
+            Uses connection string to connect to datasource.
+            </summary>
+            <param name="connectionString">The connection string to the database.</param>
+            <param name="useStoredProcedure">A boolean value that indicates if we use the stored procedures or embedded queries.</param>
+            <param name="providerInvariantName">Name of the invariant provider use by the DbProviderFactory.</param>
+        </member>
+        <member name="T:Online_Shopping_System.Data.SqlClient.SqlItemProviderBase">
+            <summary>
+             This class is the SqlClient Data Access Logic Component implementation for the <see cref="T:Online_Shopping_System.Entities.Item"/> entity.
+            </summary>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlItemProviderBase.#ctor">
+            <summary>
+            Creates a new <see cref="T:Online_Shopping_System.Data.SqlClient.SqlItemProviderBase"/> instance.
+            </summary>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlItemProviderBase.#ctor(System.String,System.Boolean,System.String)">
+            <summary>
+            Creates a new <see cref="T:Online_Shopping_System.Data.SqlClient.SqlItemProviderBase"/> instance.
+            Uses connection string to connect to datasource.
+            </summary>
+            <param name="connectionString">The connection string to the database.</param>
+            <param name="useStoredProcedure">A boolean value that indicates if we should use stored procedures or embedded queries.</param>
+            <param name="providerInvariantName">Name of the invariant provider use by the DbProviderFactory.</param>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.SqlItemProviderBase.ConnectionString">
+            <summary>
+            Gets or sets the connection string.
+            </summary>
+            <value>The connection string.</value>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.SqlItemProviderBase.UseStoredProcedure">
+            <summary>
+            Gets or sets a value indicating whether to use stored procedures.
+            </summary>
+            <value><c>true</c> if we choose to use use stored procedures; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.SqlItemProviderBase.ProviderInvariantName">
+            <summary>
+            Gets or sets the invariant provider name listed in the DbProviderFactories machine.config section.
+            </summary>
+            <value>The name of the provider invariant.</value>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlItemProviderBase.Delete(Online_Shopping_System.Data.TransactionManager,System.Int32)">
+            <summary>
+            	Deletes a row from the DataSource.
+            </summary>
+            <param name="_itemId">. Primary Key.</param>	
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <remarks>Deletes based on primary key(s).</remarks>
+            <returns>Returns true if operation suceeded.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlItemProviderBase.Find(Online_Shopping_System.Data.TransactionManager,System.String,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Returns rows meeting the whereClause condition from the DataSource.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="whereClause">Specifies the condition for the rows returned by a query (Name='John Doe', Name='John Doe' AND Id='1', Name='John Doe' OR Id='1').</param>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">out. The number of rows that match this query.</param>
+            <remarks>Operators must be capitalized (OR, AND).</remarks>
+            <returns>Returns a typed collection of Online_Shopping_System.Entities.Item objects.</returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlItemProviderBase.Find(Online_Shopping_System.Data.TransactionManager,Online_Shopping_System.Data.IFilterParameterCollection,System.String,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Returns rows from the DataSource that meet the parameter conditions.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="parameters">A collection of <see cref="T:Online_Shopping_System.Data.SqlFilterParameter"/> objects.</param>
+            <param name="orderBy">Specifies the sort criteria for the rows in the DataSource (Name ASC; BirthDay DESC, Name ASC);</param>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">out. The number of rows that match this query.</param>
+            <returns>Returns a typed collection of Online_Shopping_System.Entities.Item objects.</returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlItemProviderBase.GetAll(Online_Shopping_System.Data.TransactionManager,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Gets All rows from the DataSource.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">out. The number of rows that match this query.</param>
+            <remarks></remarks>
+            <returns>Returns a typed collection of Online_Shopping_System.Entities.Item objects.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlItemProviderBase.GetPaged(Online_Shopping_System.Data.TransactionManager,System.String,System.String,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            Gets a page of rows from the DataSource.
+            </summary>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">Number of rows in the DataSource.</param>
+            <param name="whereClause">Specifies the condition for the rows returned by a query (Name='John Doe', Name='John Doe' AND Id='1', Name='John Doe' OR Id='1').</param>
+            <param name="orderBy">Specifies the sort criteria for the rows in the DataSource (Name ASC; BirthDay DESC, Name ASC);</param>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <remarks></remarks>
+            <returns>Returns a typed collection of Online_Shopping_System.Entities.Item objects.</returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlItemProviderBase.GetByItemId(Online_Shopping_System.Data.TransactionManager,System.Int32,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Gets rows from the datasource based on the PK_Item index.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="_itemId"></param>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">out parameter to get total records for query.</param>
+            <returns>Returns an instance of the <see cref="T:Online_Shopping_System.Entities.Item"/> class.</returns>
+            <remarks></remarks>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlItemProviderBase.BulkInsert(Online_Shopping_System.Data.TransactionManager,Online_Shopping_System.Entities.TList{Online_Shopping_System.Entities.Item})">
+            <summary>
+            Lets you efficiently bulk insert many entities to the database.
+            </summary>
+            <param name="transactionManager">The transaction manager.</param>
+            <param name="entities">The entities.</param>
+            <remarks>
+            	After inserting into the datasource, the Online_Shopping_System.Entities.Item object will be updated
+            	to refelect any changes made by the datasource. (ie: identity or computed columns)
+            </remarks>	
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlItemProviderBase.Insert(Online_Shopping_System.Data.TransactionManager,Online_Shopping_System.Entities.Item)">
+            <summary>
+            	Inserts a Online_Shopping_System.Entities.Item object into the datasource using a transaction.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="entity">Online_Shopping_System.Entities.Item object to insert.</param>
+            <remarks>
+            	After inserting into the datasource, the Online_Shopping_System.Entities.Item object will be updated
+            	to refelect any changes made by the datasource. (ie: identity or computed columns)
+            </remarks>	
+            <returns>Returns true if operation is successful.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlItemProviderBase.Update(Online_Shopping_System.Data.TransactionManager,Online_Shopping_System.Entities.Item)">
+            <summary>
+            	Update an existing row in the datasource.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="entity">Online_Shopping_System.Entities.Item object to update.</param>
+            <remarks>
+            	After updating the datasource, the Online_Shopping_System.Entities.Item object will be updated
+            	to refelect any changes made by the datasource. (ie: identity or computed columns)
+            </remarks>
+            <returns>Returns true if operation is successful.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="T:Online_Shopping_System.Data.SqlClient.SqlPaymentProvider">
+            <summary>
+             This class is the SqlClient Data Access Logic Component implementation for the <see cref="T:Online_Shopping_System.Entities.Payment"/> entity.
+            </summary>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlPaymentProvider.#ctor(System.String,System.Boolean,System.String)">
+            <summary>
+            Creates a new <see cref="T:Online_Shopping_System.Data.SqlClient.SqlPaymentProvider"/> instance.
+            Uses connection string to connect to datasource.
+            </summary>
+            <param name="connectionString">The connection string to the database.</param>
+            <param name="useStoredProcedure">A boolean value that indicates if we use the stored procedures or embedded queries.</param>
+            <param name="providerInvariantName">Name of the invariant provider use by the DbProviderFactory.</param>
+        </member>
+        <member name="T:Online_Shopping_System.Data.SqlClient.SqlPaymentProviderBase">
+            <summary>
+             This class is the SqlClient Data Access Logic Component implementation for the <see cref="T:Online_Shopping_System.Entities.Payment"/> entity.
+            </summary>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlPaymentProviderBase.#ctor">
+            <summary>
+            Creates a new <see cref="T:Online_Shopping_System.Data.SqlClient.SqlPaymentProviderBase"/> instance.
+            </summary>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlPaymentProviderBase.#ctor(System.String,System.Boolean,System.String)">
+            <summary>
+            Creates a new <see cref="T:Online_Shopping_System.Data.SqlClient.SqlPaymentProviderBase"/> instance.
+            Uses connection string to connect to datasource.
+            </summary>
+            <param name="connectionString">The connection string to the database.</param>
+            <param name="useStoredProcedure">A boolean value that indicates if we should use stored procedures or embedded queries.</param>
+            <param name="providerInvariantName">Name of the invariant provider use by the DbProviderFactory.</param>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.SqlPaymentProviderBase.ConnectionString">
+            <summary>
+            Gets or sets the connection string.
+            </summary>
+            <value>The connection string.</value>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.SqlPaymentProviderBase.UseStoredProcedure">
+            <summary>
+            Gets or sets a value indicating whether to use stored procedures.
+            </summary>
+            <value><c>true</c> if we choose to use use stored procedures; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.SqlPaymentProviderBase.ProviderInvariantName">
+            <summary>
+            Gets or sets the invariant provider name listed in the DbProviderFactories machine.config section.
+            </summary>
+            <value>The name of the provider invariant.</value>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlPaymentProviderBase.Delete(Online_Shopping_System.Data.TransactionManager,System.Int32)">
+            <summary>
+            	Deletes a row from the DataSource.
+            </summary>
+            <param name="_paymentId">. Primary Key.</param>	
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <remarks>Deletes based on primary key(s).</remarks>
+            <returns>Returns true if operation suceeded.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlPaymentProviderBase.Find(Online_Shopping_System.Data.TransactionManager,System.String,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Returns rows meeting the whereClause condition from the DataSource.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="whereClause">Specifies the condition for the rows returned by a query (Name='John Doe', Name='John Doe' AND Id='1', Name='John Doe' OR Id='1').</param>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">out. The number of rows that match this query.</param>
+            <remarks>Operators must be capitalized (OR, AND).</remarks>
+            <returns>Returns a typed collection of Online_Shopping_System.Entities.Payment objects.</returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlPaymentProviderBase.Find(Online_Shopping_System.Data.TransactionManager,Online_Shopping_System.Data.IFilterParameterCollection,System.String,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Returns rows from the DataSource that meet the parameter conditions.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="parameters">A collection of <see cref="T:Online_Shopping_System.Data.SqlFilterParameter"/> objects.</param>
+            <param name="orderBy">Specifies the sort criteria for the rows in the DataSource (Name ASC; BirthDay DESC, Name ASC);</param>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">out. The number of rows that match this query.</param>
+            <returns>Returns a typed collection of Online_Shopping_System.Entities.Payment objects.</returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlPaymentProviderBase.GetAll(Online_Shopping_System.Data.TransactionManager,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Gets All rows from the DataSource.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">out. The number of rows that match this query.</param>
+            <remarks></remarks>
+            <returns>Returns a typed collection of Online_Shopping_System.Entities.Payment objects.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlPaymentProviderBase.GetPaged(Online_Shopping_System.Data.TransactionManager,System.String,System.String,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            Gets a page of rows from the DataSource.
+            </summary>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">Number of rows in the DataSource.</param>
+            <param name="whereClause">Specifies the condition for the rows returned by a query (Name='John Doe', Name='John Doe' AND Id='1', Name='John Doe' OR Id='1').</param>
+            <param name="orderBy">Specifies the sort criteria for the rows in the DataSource (Name ASC; BirthDay DESC, Name ASC);</param>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <remarks></remarks>
+            <returns>Returns a typed collection of Online_Shopping_System.Entities.Payment objects.</returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlPaymentProviderBase.GetByCustomerId(Online_Shopping_System.Data.TransactionManager,System.Int32,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Gets rows from the datasource based on the FK_Payment_customer key.
+            	FK_Payment_customer Description: 
+            </summary>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="_customerId"></param>
+            <param name="count">out parameter to get total records for query</param>
+            <remarks></remarks>
+            <returns>Returns a typed collection of Online_Shopping_System.Entities.Payment objects.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlPaymentProviderBase.GetByPaymentId(Online_Shopping_System.Data.TransactionManager,System.Int32,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Gets rows from the datasource based on the PK_Payment index.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="_paymentId"></param>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">out parameter to get total records for query.</param>
+            <returns>Returns an instance of the <see cref="T:Online_Shopping_System.Entities.Payment"/> class.</returns>
+            <remarks></remarks>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlPaymentProviderBase.BulkInsert(Online_Shopping_System.Data.TransactionManager,Online_Shopping_System.Entities.TList{Online_Shopping_System.Entities.Payment})">
+            <summary>
+            Lets you efficiently bulk insert many entities to the database.
+            </summary>
+            <param name="transactionManager">The transaction manager.</param>
+            <param name="entities">The entities.</param>
+            <remarks>
+            	After inserting into the datasource, the Online_Shopping_System.Entities.Payment object will be updated
+            	to refelect any changes made by the datasource. (ie: identity or computed columns)
+            </remarks>	
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlPaymentProviderBase.Insert(Online_Shopping_System.Data.TransactionManager,Online_Shopping_System.Entities.Payment)">
+            <summary>
+            	Inserts a Online_Shopping_System.Entities.Payment object into the datasource using a transaction.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="entity">Online_Shopping_System.Entities.Payment object to insert.</param>
+            <remarks>
+            	After inserting into the datasource, the Online_Shopping_System.Entities.Payment object will be updated
+            	to refelect any changes made by the datasource. (ie: identity or computed columns)
+            </remarks>	
+            <returns>Returns true if operation is successful.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlPaymentProviderBase.Update(Online_Shopping_System.Data.TransactionManager,Online_Shopping_System.Entities.Payment)">
+            <summary>
+            	Update an existing row in the datasource.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="entity">Online_Shopping_System.Entities.Payment object to update.</param>
+            <remarks>
+            	After updating the datasource, the Online_Shopping_System.Entities.Payment object will be updated
+            	to refelect any changes made by the datasource. (ie: identity or computed columns)
+            </remarks>
+            <returns>Returns true if operation is successful.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="T:Online_Shopping_System.Data.SqlClient.SqlSupplierProvider">
+            <summary>
+             This class is the SqlClient Data Access Logic Component implementation for the <see cref="T:Online_Shopping_System.Entities.Supplier"/> entity.
+            </summary>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlSupplierProvider.#ctor(System.String,System.Boolean,System.String)">
+            <summary>
+            Creates a new <see cref="T:Online_Shopping_System.Data.SqlClient.SqlSupplierProvider"/> instance.
+            Uses connection string to connect to datasource.
+            </summary>
+            <param name="connectionString">The connection string to the database.</param>
+            <param name="useStoredProcedure">A boolean value that indicates if we use the stored procedures or embedded queries.</param>
+            <param name="providerInvariantName">Name of the invariant provider use by the DbProviderFactory.</param>
+        </member>
+        <member name="T:Online_Shopping_System.Data.SqlClient.SqlSupplierProviderBase">
+            <summary>
+             This class is the SqlClient Data Access Logic Component implementation for the <see cref="T:Online_Shopping_System.Entities.Supplier"/> entity.
+            </summary>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlSupplierProviderBase.#ctor">
+            <summary>
+            Creates a new <see cref="T:Online_Shopping_System.Data.SqlClient.SqlSupplierProviderBase"/> instance.
+            </summary>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlSupplierProviderBase.#ctor(System.String,System.Boolean,System.String)">
+            <summary>
+            Creates a new <see cref="T:Online_Shopping_System.Data.SqlClient.SqlSupplierProviderBase"/> instance.
+            Uses connection string to connect to datasource.
+            </summary>
+            <param name="connectionString">The connection string to the database.</param>
+            <param name="useStoredProcedure">A boolean value that indicates if we should use stored procedures or embedded queries.</param>
+            <param name="providerInvariantName">Name of the invariant provider use by the DbProviderFactory.</param>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.SqlSupplierProviderBase.ConnectionString">
+            <summary>
+            Gets or sets the connection string.
+            </summary>
+            <value>The connection string.</value>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.SqlSupplierProviderBase.UseStoredProcedure">
+            <summary>
+            Gets or sets a value indicating whether to use stored procedures.
+            </summary>
+            <value><c>true</c> if we choose to use use stored procedures; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.SqlSupplierProviderBase.ProviderInvariantName">
+            <summary>
+            Gets or sets the invariant provider name listed in the DbProviderFactories machine.config section.
+            </summary>
+            <value>The name of the provider invariant.</value>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlSupplierProviderBase.Delete(Online_Shopping_System.Data.TransactionManager,System.Int32)">
+            <summary>
+            	Deletes a row from the DataSource.
+            </summary>
+            <param name="_supplierId">. Primary Key.</param>	
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <remarks>Deletes based on primary key(s).</remarks>
+            <returns>Returns true if operation suceeded.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlSupplierProviderBase.Find(Online_Shopping_System.Data.TransactionManager,System.String,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Returns rows meeting the whereClause condition from the DataSource.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="whereClause">Specifies the condition for the rows returned by a query (Name='John Doe', Name='John Doe' AND Id='1', Name='John Doe' OR Id='1').</param>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">out. The number of rows that match this query.</param>
+            <remarks>Operators must be capitalized (OR, AND).</remarks>
+            <returns>Returns a typed collection of Online_Shopping_System.Entities.Supplier objects.</returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlSupplierProviderBase.Find(Online_Shopping_System.Data.TransactionManager,Online_Shopping_System.Data.IFilterParameterCollection,System.String,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Returns rows from the DataSource that meet the parameter conditions.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="parameters">A collection of <see cref="T:Online_Shopping_System.Data.SqlFilterParameter"/> objects.</param>
+            <param name="orderBy">Specifies the sort criteria for the rows in the DataSource (Name ASC; BirthDay DESC, Name ASC);</param>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">out. The number of rows that match this query.</param>
+            <returns>Returns a typed collection of Online_Shopping_System.Entities.Supplier objects.</returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlSupplierProviderBase.GetAll(Online_Shopping_System.Data.TransactionManager,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Gets All rows from the DataSource.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">out. The number of rows that match this query.</param>
+            <remarks></remarks>
+            <returns>Returns a typed collection of Online_Shopping_System.Entities.Supplier objects.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlSupplierProviderBase.GetPaged(Online_Shopping_System.Data.TransactionManager,System.String,System.String,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            Gets a page of rows from the DataSource.
+            </summary>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">Number of rows in the DataSource.</param>
+            <param name="whereClause">Specifies the condition for the rows returned by a query (Name='John Doe', Name='John Doe' AND Id='1', Name='John Doe' OR Id='1').</param>
+            <param name="orderBy">Specifies the sort criteria for the rows in the DataSource (Name ASC; BirthDay DESC, Name ASC);</param>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <remarks></remarks>
+            <returns>Returns a typed collection of Online_Shopping_System.Entities.Supplier objects.</returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlSupplierProviderBase.GetByItemId(Online_Shopping_System.Data.TransactionManager,System.Int32,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Gets rows from the datasource based on the FK_Supplier_Item key.
+            	FK_Supplier_Item Description: 
+            </summary>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="_itemId"></param>
+            <param name="count">out parameter to get total records for query</param>
+            <remarks></remarks>
+            <returns>Returns a typed collection of Online_Shopping_System.Entities.Supplier objects.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlSupplierProviderBase.GetBySupplierId(Online_Shopping_System.Data.TransactionManager,System.Int32,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Gets rows from the datasource based on the PK_Supplier index.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="_supplierId"></param>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">out parameter to get total records for query.</param>
+            <returns>Returns an instance of the <see cref="T:Online_Shopping_System.Entities.Supplier"/> class.</returns>
+            <remarks></remarks>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlSupplierProviderBase.BulkInsert(Online_Shopping_System.Data.TransactionManager,Online_Shopping_System.Entities.TList{Online_Shopping_System.Entities.Supplier})">
+            <summary>
+            Lets you efficiently bulk insert many entities to the database.
+            </summary>
+            <param name="transactionManager">The transaction manager.</param>
+            <param name="entities">The entities.</param>
+            <remarks>
+            	After inserting into the datasource, the Online_Shopping_System.Entities.Supplier object will be updated
+            	to refelect any changes made by the datasource. (ie: identity or computed columns)
+            </remarks>	
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlSupplierProviderBase.Insert(Online_Shopping_System.Data.TransactionManager,Online_Shopping_System.Entities.Supplier)">
+            <summary>
+            	Inserts a Online_Shopping_System.Entities.Supplier object into the datasource using a transaction.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="entity">Online_Shopping_System.Entities.Supplier object to insert.</param>
+            <remarks>
+            	After inserting into the datasource, the Online_Shopping_System.Entities.Supplier object will be updated
+            	to refelect any changes made by the datasource. (ie: identity or computed columns)
+            </remarks>	
+            <returns>Returns true if operation is successful.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlSupplierProviderBase.Update(Online_Shopping_System.Data.TransactionManager,Online_Shopping_System.Entities.Supplier)">
+            <summary>
+            	Update an existing row in the datasource.
+            </summary>
+            <param name="transactionManager"><see cref="T:Online_Shopping_System.Data.TransactionManager"/> object</param>
+            <param name="entity">Online_Shopping_System.Entities.Supplier object to update.</param>
+            <remarks>
+            	After updating the datasource, the Online_Shopping_System.Entities.Supplier object will be updated
+            	to refelect any changes made by the datasource. (ie: identity or computed columns)
+            </remarks>
+            <returns>Returns true if operation is successful.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="T:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider">
+            <summary>
+            This class is the Sql implementation of the NetTiersProvider.
+            </summary>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.#ctor">
+             <summary>
+             Initializes a new instance of the <see cref="T:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider"/> class.
+            </summary>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.Initialize(System.String,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Initializes the provider.
+            </summary>
+            <param name="name">The friendly name of the provider.</param>
+            <param name="config">A collection of the name/value pairs representing the provider-specific attributes specified in the configuration for this provider.</param>
+            <exception cref="T:System.ArgumentNullException">The name of the provider is null.</exception>
+            <exception cref="T:System.InvalidOperationException">An attempt is made to call <see cref="M:System.Configuration.Provider.ProviderBase.Initialize(System.String,System.Collections.Specialized.NameValueCollection)"></see> on a provider after the provider has already been initialized.</exception>
+            <exception cref="T:System.ArgumentException">The name of the provider has a length of zero.</exception>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.CreateTransaction">
+            <summary>
+            Creates a new <see cref="T:Online_Shopping_System.Data.TransactionManager"/> instance from the current datasource.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.UseStoredProcedure">
+            <summary>
+            Gets a value indicating whether to use stored procedure or not.
+            </summary>
+            <value>
+            	<c>true</c> if this repository use stored procedures; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.ConnectionString">
+            <summary>
+            Gets or sets the connection string.
+            </summary>
+            <value>The connection string.</value>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.ProviderInvariantName">
+            <summary>
+            Gets or sets the invariant provider name listed in the DbProviderFactories machine.config section.
+            </summary>
+            <value>The name of the provider invariant.</value>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.IsTransactionSupported">
+            <summary>
+             Indicates if the current <see cref="T:Online_Shopping_System.Data.Bases.NetTiersProvider"/> implementation supports Transacton.
+            </summary>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.CartDetailProvider">
+            <summary>
+             This class is the Data Access Logic Component for the <see cref="T:Online_Shopping_System.Entities.CartDetail"/> business entity.
+             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
+            </summary>
+             <value></value>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.SqlCartDetailProvider">
+            <summary>
+            Gets the current <see cref="P:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.SqlCartDetailProvider"/>.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.CartProvider">
+            <summary>
+             This class is the Data Access Logic Component for the <see cref="T:Online_Shopping_System.Entities.Cart"/> business entity.
+             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
+            </summary>
+             <value></value>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.SqlCartProvider">
+            <summary>
+            Gets the current <see cref="P:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.SqlCartProvider"/>.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.CategoryProvider">
+            <summary>
+             This class is the Data Access Logic Component for the <see cref="T:Online_Shopping_System.Entities.Category"/> business entity.
+             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
+            </summary>
+             <value></value>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.SqlCategoryProvider">
+            <summary>
+            Gets the current <see cref="P:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.SqlCategoryProvider"/>.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.CustomerProvider">
+            <summary>
+             This class is the Data Access Logic Component for the <see cref="T:Online_Shopping_System.Entities.Customer"/> business entity.
+             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
+            </summary>
+             <value></value>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.SqlCustomerProvider">
+            <summary>
+            Gets the current <see cref="P:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.SqlCustomerProvider"/>.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.InvoiceProvider">
+            <summary>
+             This class is the Data Access Logic Component for the <see cref="T:Online_Shopping_System.Entities.Invoice"/> business entity.
+             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
+            </summary>
+             <value></value>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.SqlInvoiceProvider">
+            <summary>
+            Gets the current <see cref="P:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.SqlInvoiceProvider"/>.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.ItemProvider">
+            <summary>
+             This class is the Data Access Logic Component for the <see cref="T:Online_Shopping_System.Entities.Item"/> business entity.
+             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
+            </summary>
+             <value></value>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.SqlItemProvider">
+            <summary>
+            Gets the current <see cref="P:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.SqlItemProvider"/>.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.PaymentProvider">
+            <summary>
+             This class is the Data Access Logic Component for the <see cref="T:Online_Shopping_System.Entities.Payment"/> business entity.
+             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
+            </summary>
+             <value></value>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.SqlPaymentProvider">
+            <summary>
+            Gets the current <see cref="P:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.SqlPaymentProvider"/>.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.SupplierProvider">
+            <summary>
+             This class is the Data Access Logic Component for the <see cref="T:Online_Shopping_System.Entities.Supplier"/> business entity.
+             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
+            </summary>
+             <value></value>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.SqlSupplierProvider">
+            <summary>
+            Gets the current <see cref="P:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.SqlSupplierProvider"/>.
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.ExecuteNonQuery(System.String,System.Object[])">
+            <summary>
+            Executes the non query.
+            </summary>
+            <param name="storedProcedureName">Name of the stored procedure.</param>
+            <param name="parameterValues">The parameter values.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.ExecuteNonQuery(Online_Shopping_System.Data.TransactionManager,System.String,System.Object[])">
+            <summary>
+            Executes the non query.
+            </summary>
+            <param name="transactionManager">The transaction manager.</param>
+            <param name="storedProcedureName">Name of the stored procedure.</param>
+            <param name="parameterValues">The parameter values.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.ExecuteNonQuery(System.Data.Common.DbCommand)">
+            <summary>
+            Executes the non query.
+            </summary>
+            <param name="commandWrapper">The command wrapper.</param>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.ExecuteNonQuery(Online_Shopping_System.Data.TransactionManager,System.Data.Common.DbCommand)">
+            <summary>
+            Executes the non query.
+            </summary>
+            <param name="transactionManager">The transaction manager.</param>
+            <param name="commandWrapper">The command wrapper.</param>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.ExecuteNonQuery(System.Data.CommandType,System.String)">
+            <summary>
+            Executes the non query.
+            </summary>
+            <param name="commandType">Type of the command.</param>
+            <param name="commandText">The command text.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.ExecuteNonQuery(Online_Shopping_System.Data.TransactionManager,System.Data.CommandType,System.String)">
+            <summary>
+            Executes the non query.
+            </summary>
+            <param name="transactionManager">The transaction manager.</param>
+            <param name="commandType">Type of the command.</param>
+            <param name="commandText">The command text.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.ExecuteReader(System.String,System.Object[])">
+            <summary>
+            Executes the reader.
+            </summary>
+            <param name="storedProcedureName">Name of the stored procedure.</param>
+            <param name="parameterValues">The parameter values.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.ExecuteReader(Online_Shopping_System.Data.TransactionManager,System.String,System.Object[])">
+            <summary>
+            Executes the reader.
+            </summary>
+            <param name="transactionManager">The transaction manager.</param>
+            <param name="storedProcedureName">Name of the stored procedure.</param>
+            <param name="parameterValues">The parameter values.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.ExecuteReader(System.Data.Common.DbCommand)">
+            <summary>
+            Executes the reader.
+            </summary>
+            <param name="commandWrapper">The command wrapper.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.ExecuteReader(Online_Shopping_System.Data.TransactionManager,System.Data.Common.DbCommand)">
+            <summary>
+            Executes the reader.
+            </summary>
+            <param name="transactionManager">The transaction manager.</param>
+            <param name="commandWrapper">The command wrapper.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.ExecuteReader(System.Data.CommandType,System.String)">
+            <summary>
+            Executes the reader.
+            </summary>
+            <param name="commandType">Type of the command.</param>
+            <param name="commandText">The command text.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.ExecuteReader(Online_Shopping_System.Data.TransactionManager,System.Data.CommandType,System.String)">
+            <summary>
+            Executes the reader.
+            </summary>
+            <param name="transactionManager">The transaction manager.</param>
+            <param name="commandType">Type of the command.</param>
+            <param name="commandText">The command text.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.ExecuteDataSet(System.String,System.Object[])">
+            <summary>
+            Executes the data set.
+            </summary>
+            <param name="storedProcedureName">Name of the stored procedure.</param>
+            <param name="parameterValues">The parameter values.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.ExecuteDataSet(Online_Shopping_System.Data.TransactionManager,System.String,System.Object[])">
+            <summary>
+            Executes the data set.
+            </summary>
+            <param name="transactionManager">The transaction manager.</param>
+            <param name="storedProcedureName">Name of the stored procedure.</param>
+            <param name="parameterValues">The parameter values.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.ExecuteDataSet(System.Data.Common.DbCommand)">
+            <summary>
+            Executes the data set.
+            </summary>
+            <param name="commandWrapper">The command wrapper.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.ExecuteDataSet(Online_Shopping_System.Data.TransactionManager,System.Data.Common.DbCommand)">
+            <summary>
+            Executes the data set.
+            </summary>
+            <param name="transactionManager">The transaction manager.</param>
+            <param name="commandWrapper">The command wrapper.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.ExecuteDataSet(System.Data.CommandType,System.String)">
+            <summary>
+            Executes the data set.
+            </summary>
+            <param name="commandType">Type of the command.</param>
+            <param name="commandText">The command text.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.ExecuteDataSet(Online_Shopping_System.Data.TransactionManager,System.Data.CommandType,System.String)">
+            <summary>
+            Executes the data set.
+            </summary>
+            <param name="transactionManager">The transaction manager.</param>
+            <param name="commandType">Type of the command.</param>
+            <param name="commandText">The command text.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.ExecuteScalar(System.String,System.Object[])">
+            <summary>
+            Executes the scalar.
+            </summary>
+            <param name="storedProcedureName">Name of the stored procedure.</param>
+            <param name="parameterValues">The parameter values.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.ExecuteScalar(Online_Shopping_System.Data.TransactionManager,System.String,System.Object[])">
+            <summary>
+            Executes the scalar.
+            </summary>
+            <param name="transactionManager">The transaction manager.</param>
+            <param name="storedProcedureName">Name of the stored procedure.</param>
+            <param name="parameterValues">The parameter values.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.ExecuteScalar(System.Data.Common.DbCommand)">
+            <summary>
+            Executes the scalar.
+            </summary>
+            <param name="commandWrapper">The command wrapper.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.ExecuteScalar(Online_Shopping_System.Data.TransactionManager,System.Data.Common.DbCommand)">
+            <summary>
+            Executes the scalar.
+            </summary>
+            <param name="transactionManager">The transaction manager.</param>
+            <param name="commandWrapper">The command wrapper.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.ExecuteScalar(System.Data.CommandType,System.String)">
+            <summary>
+            Executes the scalar.
+            </summary>
+            <param name="commandType">Type of the command.</param>
+            <param name="commandText">The command text.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.SqlNetTiersProvider.ExecuteScalar(Online_Shopping_System.Data.TransactionManager,System.Data.CommandType,System.String)">
+            <summary>
+            Executes the scalar.
+            </summary>
+            <param name="transactionManager">The transaction manager.</param>
+            <param name="commandType">Type of the command.</param>
+            <param name="commandText">The command text.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Online_Shopping_System.Data.SqlClient.StoredProcedureProvider">
+            <summary>
+            Summary description for Procedures.
+            </summary>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.StoredProcedureProvider.#ctor">
+            <summary>
+            Creates a new <see cref="T:Online_Shopping_System.Data.SqlClient.StoredProcedureProvider"/> instance.
+            </summary>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.StoredProcedureProvider.Current">
+            <summary>
+            Gets the current <see cref="T:Online_Shopping_System.Data.SqlClient.StoredProcedureProvider"/> singleton instance.
+            </summary>
+            <value><see cref="T:Online_Shopping_System.Data.SqlClient.StoredProcedureProvider"/></value>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.StoredProcedureProvider.Procedures">
+            <summary>
+            Gets or sets the procedures.
+            </summary>
+            <value>An <see cref="T:System.Collections.ArrayList"/> of <see cref="T:Online_Shopping_System.Data.SqlClient.Procedure"/> objects.</value>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.StoredProcedureProvider.Item(System.String)">
+            <summary>
+            Gets or sets the <see cref="T:Online_Shopping_System.Data.SqlClient.Procedure"/> instance with the specified name.
+            </summary>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.StoredProcedureProvider.Item(System.Int32)">
+            <summary>
+            Gets or sets the <see cref="T:Online_Shopping_System.Data.SqlClient.Procedure"/> instance at the specified index.
+            </summary>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.StoredProcedureProvider.Serialize(System.String)">
+            <summary>
+            Serializes the specified filename.
+            </summary>
+            <param name="filename">Filename.</param>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.StoredProcedureProvider.Deserialize">
+            <summary>
+            Deserializes this instance.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.StoredProcedureProvider.GetProcedureBodyFromEmbeddedResource(System.String)">
+            <summary>
+            Get the query text from the embedded xml file.
+            </summary>
+            <param name="name">The name of the query.</param>
+            <returns>the text of the query</returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.StoredProcedureProvider.GetCommandWrapper(Microsoft.Practices.EnterpriseLibrary.Data.Database,System.String,System.Boolean)">
+            <summary>
+            Get the command wrapper, either from the stored procedures or from the embedded queries.
+            </summary>
+            <param name="database">The database instance.</param>
+            <param name="commandName">the name of the sp.</param>
+            <param name="useStoredProcedure">Indicates if we want stored procedure.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.StoredProcedureProvider.GetCommandWrapper(Microsoft.Practices.EnterpriseLibrary.Data.Database,System.String,System.Type,Online_Shopping_System.Data.SqlFilterParameterCollection,System.String,System.Int32,System.Int32)">
+            <summary>
+            Gets the command wrapper for a dynamically generated query and
+            optionally includes server-side paging.
+            </summary>
+            <param name="database"></param>
+            <param name="commandName"></param>
+            <param name="columnEnum"></param>
+            <param name="parameters"></param>
+            <param name="orderBy"></param>
+            <param name="start"></param>
+            <param name="pageLength"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Online_Shopping_System.Data.SqlClient.Procedure">
+            <summary>
+            Represents a sql query.
+            </summary>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.Procedure.#ctor">
+            <summary>
+            Creates a new <see cref="T:Online_Shopping_System.Data.SqlClient.Procedure"/> instance.
+            </summary>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.Procedure.Parameters">
+            <summary>
+            Gets or sets the parameters.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.Procedure.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.Procedure.Owner">
+            <summary>
+            Gets or sets the owner.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.Procedure.Comment">
+            <summary>
+            Gets or sets the comment.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.Procedure.Body">
+            <summary>
+            Gets or sets the body.
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.Procedure.Parameter(System.String)">
+            <summary>
+            Get the parameter from the specified name of the param.
+            </summary>
+            <param name="paramName">Name of the param.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Online_Shopping_System.Data.SqlClient.Parameter">
+            <summary>
+            Respresents a query parameter.
+            </summary>
+        </member>
+        <member name="M:Online_Shopping_System.Data.SqlClient.Parameter.#ctor">
+            <summary>
+            Creates a new <see cref="T:Online_Shopping_System.Data.SqlClient.Parameter"/> instance.
+            </summary>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.Parameter.Name">
+            <summary>
+            Gets or sets the Name.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.Parameter.SqlType">
+            <summary>
+            Gets or sets the SqlType.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.Parameter.Direction">
+            <summary>
+            Gets or sets the Direction.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.Parameter.Size">
+            <summary>
+            Gets or sets the size.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.Parameter.Precision">
+            <summary>
+            Gets or sets the precision.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Online_Shopping_System.Data.SqlClient.Parameter.Scale">
+            <summary>
+            Gets or sets the scale.
+            </summary>
+            <value></value>
+        </member>
+    </members>
+</doc>
